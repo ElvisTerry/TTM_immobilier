@@ -1,0 +1,5 @@
+# Empêche l'exécution de tout script PHP dans ce dossier, même si un
+# fichier malveillant parvenait à passer les vérifications d'upload.
+<FilesMatch "\.ph(p[3457]?|t|tml)$">
+    Require all denied
+</FilesMatch>

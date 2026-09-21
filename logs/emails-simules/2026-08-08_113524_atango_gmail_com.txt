@@ -1,0 +1,11 @@
+À : atango@gmail.com
+Sujet : Confirmez votre adresse email - ImmoApp
+
+Bonjour Willy Ndzouondzouo,
+
+Merci de vous être inscrit sur ImmoApp.
+
+Confirmez votre adresse email en cliquant sur ce lien :
+http://localhost/immo-app/public/verification-email/cf7c98aec167c2b0634ab73720d9a4ac74870572ff4d0ba9a502ed925973aa56
+
+Ce lien est à usage unique.

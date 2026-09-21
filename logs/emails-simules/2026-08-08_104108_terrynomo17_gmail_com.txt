@@ -1,0 +1,11 @@
+À : terrynomo17@gmail.com
+Sujet : Confirmez votre adresse email - ImmoApp
+
+Bonjour Leocadie Nana,
+
+Merci de vous être inscrit sur ImmoApp.
+
+Confirmez votre adresse email en cliquant sur ce lien :
+http://localhost/immo-app/public/verification-email/eef9b74b2fc948167d46d88060dc78b4ecc44ee2c52e827d171fcb77efef4c92
+
+Ce lien est à usage unique.

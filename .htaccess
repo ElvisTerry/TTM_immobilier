@@ -1,0 +1,33 @@
+# public/.htaccess
+#
+# Réécriture d'URL : toute requête qui ne correspond pas à un vrai fichier
+# ou dossier existant (une image, le CSS...) est redirigée vers index.php,
+# qui se charge ensuite d'interpréter le chemin demandé (voir Router.php).
+#
+# C'est ce qui permet d'avoir /biens/detail/12 au lieu de
+# /index.php?route=biens/detail&id=12 : le NAVIGATEUR voit une URL propre,
+# et c'est PHP qui, en coulisses, comprend quelle page ça représente.
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+<FilesMatch "\.php$">
+    Require all granted
+</FilesMatch>
+
+# --- Mise en cache navigateur des fichiers statiques (Jour 22) ---
+# Les photos, avatars et le CSS changent rarement une fois publiés (et
+# quand le CSS change, on peut renommer le fichier ou ajouter un
+# paramètre de version dans le lien pour forcer le rechargement) : autant
+# laisser le navigateur les garder en mémoire plutôt que de les
+# retélécharger à chaque page.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>

@@ -1,0 +1,5 @@
+# Bloque tout accès direct par navigateur à ce dossier. PHP peut toujours
+# lire ces fichiers en interne via require_once (ça, c'est de la lecture
+# de fichier, pas une requête HTTP — Apache ne l'intercepte pas) : seule
+# une tentative de les charger DIRECTEMENT dans un navigateur est bloquée.
+Require all denied

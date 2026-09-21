@@ -1,0 +1,11 @@
+À : terrynomo@gmail.com
+Sujet : Confirmez votre adresse email - ImmoApp
+
+Bonjour Walter Tchayep,
+
+Merci de vous être inscrit sur ImmoApp.
+
+Confirmez votre adresse email en cliquant sur ce lien :
+http://localhost/immo-app/public/verification-email/f557284d299f898e26097f22461912ffe1623ec80222ad6ecd4b0bba6264abdf
+
+Ce lien est à usage unique.

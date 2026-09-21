@@ -1,0 +1,459 @@
+/* css/design-system.css
+   -------------------------------
+   Design system TTM v4. Une couleur dominante (vert forêt), un seul
+   accent utilisé avec parcimonie (terre cuite), de l'or réservé aux
+   traits fins. Signature : le soulignement qui glisse, réutilisé comme
+   langage commun (nav, onglets, catégories). */
+
+:root {
+    /* --- Palette (mode clair) --- */
+    --c-fond: #FBF7EF;
+    --c-fond-alt: #F3ECDC;
+    --c-surface: #FFFFFF;
+    --c-encre: #16231B;
+    --c-encre-doux: #5C6B5E;
+    --c-ligne: rgba(22, 35, 27, 0.10);
+
+    --c-foret: #0B4D34;
+    --c-foret-claire: #146B48;
+    --c-foret-sombre: #073826;
+    --c-terre: #BD4B1F;
+    --c-terre-claire: #D45F2E;
+    --c-or: #C99A34;
+
+    --ombre: 0 10px 30px rgba(22, 35, 27, 0.09);
+    --ombre-legere: 0 2px 10px rgba(22, 35, 27, 0.06);
+
+    --r-sm: 8px;
+    --r-md: 14px solid green;
+    --r-lg: 22px;
+    --r-pill: 999px;
+
+    /* Surcharge Bootstrap */
+    --bs-primary: var(--c-foret);
+    --bs-primary-rgb: 11, 77, 52;
+    --bs-body-bg: var(--c-fond);
+    --bs-body-color: var(--c-encre);
+    --bs-link-color: var(--c-foret);
+    --bs-link-hover-color: var(--c-foret-claire);
+    --bs-border-radius: var(--r-md);
+
+    --police-affichage: 'Fraunces', Georgia, serif;
+    --police-corps: 'Work Sans', -apple-system, sans-serif;
+
+    /* Alias conservés pour compatibilité avec les vues existantes */
+    --couleur-primaire: var(--c-foret);
+    --couleur-primaire-claire: var(--c-foret-claire);
+    --couleur-accent: var(--c-terre);
+    --couleur-or: var(--c-or);
+    --couleur-fond: var(--c-fond);
+    --couleur-texte: var(--c-encre);
+    --couleur-texte-doux: var(--c-encre-doux);
+}
+
+[data-theme="sombre"] {
+    --c-fond: #0E1912;
+    --c-fond-alt: #12211A;
+    --c-surface: #16241C;
+    --c-encre: #F4F1E8;
+    --c-encre-doux: #9FB0A2;
+    --c-ligne: rgba(244, 241, 232, 0.10);
+
+    --c-foret: #3FA179;
+    --c-foret-claire: #58C293;
+    --c-terre: #E0703A;
+
+    --ombre: 0 14px 36px rgba(0, 0, 0, 0.45);
+    --ombre-legere: 0 4px 16px rgba(0, 0, 0, 0.35);
+
+    --bs-primary-rgb: 63, 161, 121;
+    --bs-body-bg: var(--c-fond);
+    --bs-body-color: var(--c-encre);
+
+    --couleur-primaire: var(--c-foret);
+    --couleur-primaire-claire: var(--c-foret-claire);
+    --couleur-accent: var(--c-terre);
+    --couleur-fond: var(--c-fond);
+    --couleur-texte: var(--c-encre);
+    --couleur-texte-doux: var(--c-encre-doux);
+}
+
+/* ==================== Base ==================== */
+
+body {
+    font-family: var(--police-corps);
+    background-color: var(--c-fond);
+    color: var(--c-encre);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+h1, h2, h3, .logo-marque { font-family: var(--police-affichage); font-weight: 600; }
+h1 { font-weight: 700; }
+p { max-width: 68ch; }
+a { color: var(--c-foret); text-decoration-color: rgba(11,77,52,0.35); }
+a:hover { color: var(--c-foret-claire); }
+
+/* ==================== Boutons ==================== */
+/* Un seul bouton "fort" par écran doit utiliser btn-accent (terre cuite) ;
+   btn-primary (vert) reste l'action standard, répétée sans fatiguer l'œil. */
+
+.btn {
+    border-radius: var(--r-sm);
+    font-weight: 600;
+    padding: 0.6rem 1.4rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary {
+    background-color: var(--c-foret);
+    border-color: var(--c-foret);
+}
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--c-foret-claire);
+    border-color: var(--c-foret-claire);
+}
+.btn-accent {
+    background-color: var(--c-terre);
+    border-color: var(--c-terre);
+    color: #fff;
+}
+.btn-accent:hover { background-color: var(--c-terre-claire); border-color: var(--c-terre-claire); color: #fff; }
+.btn-outline-primary { color: var(--c-foret); border-color: var(--c-foret); }
+.btn-outline-primary:hover { background-color: var(--c-foret); border-color: var(--c-foret); }
+.btn-outline-secondary { border-color: var(--c-ligne); color: var(--c-encre); }
+.btn-outline-secondary:hover { background-color: var(--c-fond-alt); border-color: var(--c-encre-doux); color: var(--c-encre); }
+.btn-lg { padding: 0.85rem 1.8rem; font-size: 1.02rem; }
+
+/* ==================== Cartes / Surfaces ==================== */
+
+.card {
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-ligne);
+    border-radius: var(--r-md);
+    box-shadow: var(--ombre-legere);
+}
+
+/* ==================== Formulaires ==================== */
+
+.form-control, .form-select {
+    background-color: var(--c-surface);
+    color: var(--c-encre);
+    border: 1.5px solid var(--c-ligne);
+    border-radius: var(--r-sm);
+    padding: 0.6rem 0.85rem;
+}
+.form-control:focus, .form-select:focus {
+    background-color: var(--c-surface);
+    color: var(--c-encre);
+    border-color: var(--c-foret);
+    box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.15);
+}
+.form-label { font-weight: 600; font-size: 0.92rem; }
+.form-check-input:checked { background-color: var(--c-foret); border-color: var(--c-foret); }
+
+/* ==================== Badges / Alertes ==================== */
+
+.badge { border-radius: var(--r-pill); font-weight: 600; }
+.alert { border: none; border-radius: var(--r-sm); }
+.alert-danger { background-color: rgba(189, 75, 31, 0.10); color: var(--c-terre); }
+.alert-success { background-color: rgba(11, 77, 52, 0.10); color: var(--c-foret); }
+.alert-warning { background-color: rgba(201, 154, 52, 0.15); color: #7A5C1E; }
+[data-theme="sombre"] .alert-warning { color: var(--c-or); }
+
+/* ==================== Dropdown / Modal / Table ==================== */
+
+.dropdown-menu { background-color: var(--c-surface); border: 1px solid var(--c-ligne); border-radius: var(--r-md); box-shadow: var(--ombre); }
+.dropdown-item { color: var(--c-encre); }
+.dropdown-item:hover, .dropdown-item:focus { background-color: rgba(var(--bs-primary-rgb), 0.08); color: var(--c-encre); }
+.modal-content { background-color: var(--c-surface); color: var(--c-encre); border: none; border-radius: var(--r-lg); box-shadow: var(--ombre); }
+.table { --bs-table-bg: transparent; color: var(--c-encre); }
+[data-theme="sombre"] .table { --bs-table-striped-bg: rgba(255,255,255,0.03); --bs-table-hover-bg: rgba(255,255,255,0.05); border-color: var(--c-ligne); }
+.bg-light { background-color: var(--c-fond-alt) !important; }
+[data-theme="sombre"] .text-dark { color: var(--c-encre) !important; }
+[data-theme="sombre"] .text-muted { color: var(--c-encre-doux) !important; }
+
+/* ==================== En-tête ==================== */
+
+.barre-entete { background-color: var(--c-surface); border-bottom: 1px solid var(--c-ligne); position: sticky; top: 0; }
+.barre-entete-interieure { max-width: 1180px; margin: 0 auto; padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+.logo-marque { font-size: 1.4rem; color: var(--c-foret) !important; text-decoration: none; }
+
+.bouton-theme {
+    width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%;
+    border: 1.5px solid var(--c-ligne); background-color: transparent;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.05rem; transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.bouton-theme:hover { border-color: var(--c-foret); transform: translateY(-1px); }
+
+.bouton-hamburger {
+    width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%;
+    border: none; background-color: var(--c-foret);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 4px; cursor: pointer;
+}
+.bouton-hamburger .trait { width: 17px; height: 2px; background-color: #fff; border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
+.bouton-hamburger.ouvert .trait-1 { transform: translateY(6px) rotate(45deg); }
+.bouton-hamburger.ouvert .trait-2 { opacity: 0; }
+.bouton-hamburger.ouvert .trait-3 { transform: translateY(-6px) rotate(-45deg); }
+
+/* ==================== Menu plein écran ==================== */
+
+.menu-plein-ecran {
+    position: fixed; inset: 0; z-index: 1200;
+    background-color: var(--c-fond);
+    display: flex; flex-direction: column;
+    padding: 6rem 1.75rem 2rem;
+    opacity: 0; visibility: hidden; transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    overflow-y: auto;
+}
+.menu-plein-ecran.ouvert { opacity: 1; visibility: visible; transform: translateY(0); }
+.menu-plein-ecran-liens { display: flex; flex-direction: column; gap: 0.2rem; flex: 1; }
+.lien-menu {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.7rem 0.1rem; font-family: var(--police-affichage); font-size: 1.05rem; font-weight: 600;
+    color: var(--c-encre); text-decoration: none; border-bottom: 1px solid var(--c-ligne);
+}
+.lien-menu:hover, .lien-menu.actif { color: var(--c-foret); }
+.lien-menu-cta { background-color: var(--c-terre); color: #fff !important; border-radius: var(--r-md); padding: 0.85rem 1.1rem !important; border-bottom: none !important; margin: 0.5rem 0; font-size: 0.95rem; }
+.menu-plein-ecran-pied { padding-top: 1.5rem; border-top: 1px solid var(--c-ligne); display: flex; flex-direction: column; gap: 0.6rem; }
+body.menu-plein-ecran-actif { overflow: hidden; }
+
+.bouton-fermer-menu{
+    position: absolute; top: 1.25rem; right: 1.25rem; z-index: 1;
+    width: 40 px; height: 40px; border-radius: 50%;
+    border: 1.5px solid var(--c-ligne); background: var(--c-surface);
+    font-size: 1.4 rem; line-height: 1; color: var(--c-centre);
+}
+/* ==================== Trait qui glisse : langage commun du site ====================
+   Réutilisé sur : nav (déjà en place), onglets locataire/propriétaire,
+   catégories. Un seul motif d'interaction, cohérent partout. */
+
+.navbar-nav .nav-link { position: relative; color: var(--c-encre); }
+.navbar-nav .nav-link::after,
+.trait-selection::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+    background-color: var(--c-terre); border-radius: 2px;
+    transform: scaleX(0); transform-origin: center; transition: transform 0.2s ease;
+}
+.navbar-nav .nav-link:hover::after { transform: scaleX(0.6); }
+.navbar-nav .nav-link.nav-link-actif { color: var(--c-foret); font-weight: 600; }
+.navbar-nav .nav-link.nav-link-actif::after { transform: scaleX(1); background-color: var(--c-foret); }
+
+/* ==================== Page d'accueil ==================== */
+
+/* --- Hero : épuré, clair, avec un halo de couleur doux façon aquarelle
+   en arrière-plan (plusieurs dégradés radiaux flous) plutôt qu'un bandeau
+   plein — plus premium, plus "respirant" qu'un aplat de couleur dense.
+   Aucune photo requise : cohérent avec notre absence de banque d'images. --- */
+.hero-accueil {
+    position: relative;
+    text-align: center;
+    padding: 3.5rem 1rem 3rem;
+    overflow: hidden;
+}
+.hero-accueil::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse 500px 320px at 15% 20%, rgba(11,93,59,0.16), transparent 70%),
+        radial-gradient(ellipse 420px 300px at 88% 15%, rgba(227,167,46,0.20), transparent 70%),
+        radial-gradient(ellipse 480px 340px at 50% 95%, rgba(193,68,14,0.10), transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+}
+.hero-accueil .contenu-hero {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.hero-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--couleur-accent);
+    margin-bottom: 0.75rem;
+}
+.hero-titre {
+    font-family: var(--police-affichage);
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.08;
+    color: var(--couleur-texte);
+}
+.hero-soustitre {
+    color: var(--couleur-texte-doux);
+    font-size: 1.1rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Barre de recherche en ligne : un seul groupe compact, pas de carte
+   flottante séparée — plus sobre, plus fiable en mise en page. */
+.barre-recherche-accueil {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    background: var(--c-surface); border: 1px solid var(--c-ligne);
+    border-radius: var(--r-md); padding: 0.6rem;
+    box-shadow: var(--ombre-legere);
+}
+.barre-recherche-accueil input,
+.barre-recherche-accueil select {
+    border: none !important; background: transparent !important; box-shadow: none !important;
+    flex: 1 1 140px; min-width: 120px; padding: 0.5rem 0.6rem !important;
+}
+.barre-recherche-accueil .btn { flex: 0 0 auto; }
+
+.grille-stats { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.grille-stats .carte-stat { flex: 1 1 130px; }
+.list-group { border-radius: var(--r-md); overflow: hidden; }
+.list-group-item { background-color: var(--c-surface); border-color: var(--c-ligne); color: var(--c-encre); }
+.list-group-item-action:hover, .list-group-item-action:focus { background-color: var(--c-fond-alt); color: var(--c-encre); }
+
+.carte-stat {
+    flex: 1;
+    background: var(--c-surface);
+    border: 1px solid var(--c-ligne);
+    border-radius: var(--r-md);
+    padding: 1rem 0.5rem;
+    text-align: center;
+    box-shadow: var(--ombre-legere);
+}
+.carte-stat-chiffre {
+    font-family: var(--police-affichage);
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--c-foret);
+    line-height: 1.1;
+}
+.carte-stat-libelle {
+    font-size: 0.78rem;
+    color: var(--c-encre-doux);
+    margin-top: 0.2rem;
+}
+@media (max-width: 380px) {
+    .carte-stat-chiffre { font-size: 1.5rem; }
+    .carte-stat-libelle { font-size: 0.7rem; }
+}
+
+/* --- Onglets Locataire / Propriétaire : LE bloc demandé, cœur de la page --- */
+.section-roles { background: var(--c-fond-alt); border-radius: var(--r-lg); padding: 2.5rem 1.75rem; margin: 3rem 0; }
+.bascule-roles { display: inline-flex; background: var(--c-surface); border-radius: var(--r-pill); padding: 4px; margin-bottom: 2rem; border: 1px solid var(--c-ligne); }
+.bouton-role {
+    border: none; background: transparent; padding: 0.6rem 1.4rem; border-radius: var(--r-pill);
+    font-weight: 600; color: var(--c-encre-doux); cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease;
+}
+.bouton-role.actif { background: var(--c-foret); color: #fff; }
+.contenu-role { display: none; }
+.contenu-role.actif { display: block; animation: apparitionRole 0.25s ease both; }
+@keyframes apparitionRole { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.liste-role { list-style: none; padding: 0; margin: 0 0 1.75rem; }
+.liste-role li { display: flex; gap: 0.9rem; padding: 0.8rem 0; border-bottom: 1px solid var(--c-ligne); }
+.liste-role li:last-child { border-bottom: none; }
+.liste-role .numero-role {
+    font-family: var(--police-affichage); font-weight: 700; font-size: 1.1rem;
+    color: var(--c-foret); flex-shrink: 0; width: 1.6rem;
+}
+.liste-role h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+.liste-role p { font-size: 0.9rem; color: var(--c-encre-doux); margin: 0; }
+
+/* --- Catégories : liste horizontale sobre, même motif de trait --- */
+.rail-categories { display: flex; gap: 0.6rem; overflow-x: auto; padding: 0.25rem 0.1rem 0.75rem; scrollbar-width: none; }
+.rail-categories::-webkit-scrollbar { display: none; }
+.item-categorie {
+    flex: 0 0 auto; padding: 0.55rem 1.1rem; border-radius: var(--r-pill);
+    border: 1.5px solid var(--c-ligne); color: var(--c-encre-doux); text-decoration: none;
+    font-weight: 600; font-size: 0.9rem; transition: border-color 0.15s ease, color 0.15s ease;
+}
+.item-categorie:hover, .item-categorie.actif { border-color: var(--c-foret); color: var(--c-foret); }
+
+/* --- Étapes : grands chiffres fantômes, traitement éditorial --- */
+.etape { display: flex; gap: 1.25rem; align-items: flex-start; margin-bottom: 1.75rem; }
+.etape:last-child { margin-bottom: 0; }
+.etape-chiffre { font-family: var(--police-affichage); font-size: 3rem; font-weight: 600; line-height: 1; color: rgba(11,77,52,0.16); flex-shrink: 0; }
+[data-theme="sombre"] .etape-chiffre { color: rgba(63,161,121,0.22); }
+.etape h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+.etape p { font-size: 0.92rem; color: var(--c-encre-doux); margin: 0; }
+
+/* --- Bandeau CTA propriétaires --- */
+.bandeau-cta { background: var(--c-foret); color: #fff; border-radius: var(--r-lg); padding: 2.75rem 2rem; text-align: center; }
+.bandeau-cta h2 { color: #fff; }
+.bandeau-cta p { color: rgba(255,255,255,0.82); }
+.bandeau-cta .btn-accent { box-shadow: none; }
+
+/* ==================== Cartes d'annonces ==================== */
+
+.carte-bien { border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--c-ligne); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.carte-bien:hover { transform: translateY(-3px); box-shadow: var(--ombre); }
+.carte-bien img { transition: transform 0.3s ease; }
+.carte-bien:hover img { transform: scale(1.03); }
+.carte-bien .card-body { padding: 1.1rem; }
+
+.squelette-carte { border-radius: var(--r-md); overflow: hidden; background: var(--c-surface); border: 1px solid var(--c-ligne); }
+.squelette-bloc { background: linear-gradient(90deg, var(--c-ligne) 25%, transparent 50%, var(--c-ligne) 75%); background-size: 200% 100%; animation: chargementSquelette 1.4s ease-in-out infinite; }
+@keyframes chargementSquelette { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* ==================== Auth (connexion/inscription/mdp oublié) ==================== */
+
+.page-auth { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 220px); padding: 2rem 0; }
+.auth-carte { width: 100%; max-width: 430px; }
+.auth-marque { text-align: center; margin-bottom: 1.75rem; }
+.auth-marque .repere { width: 8px; height: 8px; border-radius: 50%; background: var(--c-terre); display: inline-block; margin-bottom: 0.75rem; }
+.auth-carte .card { padding: 0.5rem; }
+
+/* ==================== Photos / Avis (existant, conservé) ==================== */
+
+.photo-vignette { position: relative; width: 90px; height: 90px; border-radius: var(--r-sm); overflow: hidden; cursor: grab; border: 1px solid var(--c-ligne); }
+.photo-vignette img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.photo-vignette .bouton-suppression-photo { position: absolute; top: 4px; right: 4px; width: 22px; height: 22px; border-radius: 50%; border: none; background: rgba(0,0,0,0.6); color: #fff; line-height: 1; font-size: 1rem; }
+.photo-vignette:active { cursor: grabbing; }
+
+#selecteurEtoiles { display: inline-flex; flex-direction: row-reverse; font-size: 1.5rem; }
+.etoile-input { position: absolute; opacity: 0; pointer-events: none; }
+.etoile-label { color: var(--c-ligne); cursor: pointer; padding: 0 2px; }
+.etoile-input:checked ~ .etoile-label, #selecteurEtoiles:hover .etoile-label:hover, #selecteurEtoiles:hover .etoile-label:hover ~ .etoile-label { color: var(--c-or); }
+
+/* ==================== Accessibilité ==================== */
+
+a:focus-visible, button:focus-visible, .btn:focus-visible { outline: 3px solid var(--c-or); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* ==================== Comparateur de biens ==================== */
+
+.case-comparateur-label {
+    position: absolute; top: 10px; left: 10px; z-index: 3;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--c-surface); border: 1.5px solid var(--c-ligne);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; box-shadow: var(--ombre-legere);
+}
+.case-comparateur-label input { width: 16px; height: 16px; margin: 0; cursor: pointer; }
+
+.barre-comparateur {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 1150;
+    background: var(--c-surface); border-top: 1px solid var(--c-ligne);
+    box-shadow: var(--ombre);
+    transform: translateY(100%);
+    transition: transform 0.2s ease;
+}
+.barre-comparateur.visible { transform: translateY(0); }
+.barre-comparateur-contenu {
+    max-width: 1180px; margin: 0 auto; padding: 0.75rem 1.25rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.barre-comparateur-miniatures { display: flex; gap: 0.5rem; }
+.mini-comparateur { position: relative; width: 46px; height: 46px; border-radius: var(--r-sm); overflow: hidden; border: 1px solid var(--c-ligne); flex-shrink: 0; }
+.mini-comparateur img { width: 100%; height: 100%; object-fit: cover; }
+.mini-comparateur-vide { display: block; width: 100%; height: 100%; background: var(--c-fond-alt); }
+.mini-comparateur-retirer {
+    position: absolute; top: -4px; right: -4px; width: 18px; height: 18px; border-radius: 50%;
+    border: none; background: var(--c-terre); color: #fff; font-size: 0.75rem; line-height: 1;
+}
+
+.comparateur-table th, .comparateur-table td { min-width: 150px; }
+.comparateur-table th:first-child, .comparateur-table td:first-child { min-width: 130px; position: sticky; left: 0; background: var(--c-fond); }
+.cellule-gagnante { background-color: rgba(189, 75, 31, 0.10); border-radius: var(--r-sm); font-weight: 700; color: var(--c-terre); }
+
