@@ -1,4 +1,4 @@
-# TTM — Trouve Ton Milieu
+# TTM  Trouve Ton Milieu
 
 Plateforme immobilière camerounaise permettant à des propriétaires de publier des annonces (location ou vente) et à des locataires/acheteurs de rechercher, comparer, contacter et visiter des biens — le tout avec modération, messagerie intégrée, avis, favoris, alertes et un espace d'administration complet.
 
@@ -295,7 +295,7 @@ Tables principales (MySQL/InnoDB, clés étrangères actives) :
 ## 10. Limites connues et pistes d'amélioration
 
 - **Fiabilité des emails** : `mail()` sur hébergement mutualisé gratuit atterrit souvent en spam. Une intégration Brevo/Mailjet réglerait la question sans changer l'architecture.
-- **Pas de vérification d'identité (KYC)** pour les propriétaires — un badge « propriétaire vérifié » renforcerait la confiance, d'autant que le signalement « arnaque suspectée » existe déjà.
+- **Pas de vérification d'identité (KYC)** pour les propriétaires - un badge « propriétaire vérifié » renforcerait la confiance, d'autant que le signalement « arnaque suspectée » existe déjà.
 - **Pas de pièces jointes** dans la messagerie (texte seul).
 - **Pas de contrat/bail téléchargeable** ni de gestion de paiement en ligne (Mobile Money serait le canal adapté au marché local).
 - **Pas d'export PDF** d'une annonce.
@@ -305,4 +305,3 @@ Tables principales (MySQL/InnoDB, clés étrangères actives) :
 
 ---
 
-*Ce README est un document vivant — à mettre à jour à chaque fonctionnalité majeure ajoutée ou retirée.*
